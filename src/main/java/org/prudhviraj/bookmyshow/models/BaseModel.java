@@ -3,11 +3,14 @@ package org.prudhviraj.bookmyshow.models;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.*;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.Date;
 
 @Getter
 @Setter
+@EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
 /**
   This annotation marks the class as a base class for JPA entities.
@@ -30,15 +33,19 @@ public abstract class BaseModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(updatable = false)
     private String createdBy;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(updatable = false)
     private Date createdOn;
 
+    @Column(insertable = false)
     private String updatedBy;
 
-    @UpdateTimestamp
+    @LastModifiedDate
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(insertable = false)
     private Date updatedOn;
 }

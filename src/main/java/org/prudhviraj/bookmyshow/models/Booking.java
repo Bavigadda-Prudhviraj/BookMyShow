@@ -10,6 +10,9 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Booking extends BaseModel {
 
     private String bookingId;

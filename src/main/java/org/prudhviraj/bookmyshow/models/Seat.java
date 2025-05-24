@@ -10,9 +10,11 @@ import lombok.*;
 //Builder
 @Entity
 public class Seat extends BaseModel {
+    @Column(name = "'row'")
     private int row;
+    @Column(name = "'column'")
     private int column;
     private String seatNumber;
     @Enumerated(EnumType.ORDINAL)
-    private SeatType type;
+    private SeatType seatType;
 }

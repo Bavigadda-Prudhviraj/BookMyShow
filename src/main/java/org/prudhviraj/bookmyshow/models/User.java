@@ -5,7 +5,10 @@ import java.util.List;
 
 @Setter
 @Getter
-//Builder
+@ToString
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity(name = "users")
 public class User extends BaseModel {
     private String name;
@@ -14,3 +17,4 @@ public class User extends BaseModel {
     @OneToMany
     private List<Booking> bookings;
 }
+
